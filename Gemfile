@@ -20,4 +20,10 @@ group :development do
   gem 'rails_layout'
 end
 
+
+gem 'acts-as-taggable-on'
+
+
+# for heroku
 gem 'rails_12factor'
+

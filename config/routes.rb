@@ -1,8 +1,10 @@
 Tryit::Application.routes.draw do
-  get 'menu_items/index'
 
-  get 'menu_items/show'
-
+  
+  get 'menus/:id/tags/:tag', to: 'menus#show', as: :tag
+  
+  resources :menu_items
+  
   resources :menus do 
     resources :menu_items
   end

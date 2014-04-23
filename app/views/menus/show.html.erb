@@ -1,17 +1,22 @@
+<h1><%= @menu.title %></h1>
+
 <p>
-  <strong>Title:</strong>
-  <%= @menu.title %>
+  <strong>Tags:</strong>
+  <% if params[:tag] %>
+    <%= params[:tag] %> <%= link_to 'X', menu_path(@menu) %>
+  <% else %>
+    <% tag_cloud(MenuItem.tag_counts, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+      <%= link_to tag.name, tag_path(@menu, tag.name), :class => css_class %>
+    <% end %>
+  <% end %>
 </p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @menu.text %>
-</p>
 
-<h2>Menu Items</h2>
-<%= render  @menu.menu_items %>
+<h2>Menu Items:</h2>
+<%= render @menu_items %>
 
-<h2>Add a menu item:</h2>
-<%= render "menu_items/form" %>
-
-<%= link_to 'Edit', edit_menu_path(@menu) %> |  <%= link_to 'Back', menus_path %>
+<% if user_signed_in? %>
+  <h2>Add a menu item:</h2>
+  <%= render "menu_items/form" %>
+<% end %>
+  
+<%= link_to 'Back', menus_path %>

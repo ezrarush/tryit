@@ -1,22 +1,7 @@
 <p>
-  <strong>Name:</strong>
-  <%= menu_item.name %>
+  <strong><%= menu_item.name %> <%= number_to_currency(menu_item.price) %></strong> (<%= menu_item.tag_list %>)<br>
+  <%= menu_item.text %> 
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_menu_menu_item_path(menu_item.menu, menu_item) %> | <%= link_to 'Delete', [menu_item.menu, menu_item], method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 </p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= menu_item.text %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= menu_item.price %>
-</p>
-
-<p>
-  <%= link_to 'Destroy Menu Item', [menu_item.menu, menu_item],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-</p>
-
-

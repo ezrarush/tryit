@@ -1,4 +1,7 @@
-<%= form_for([@menu, @menu.menu_items.build]) do |f| %>
+<h1>Editing Menu Item</h1>
+ 
+
+<%= form_for @menu_item do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>

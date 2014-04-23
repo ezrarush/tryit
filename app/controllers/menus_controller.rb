@@ -1,10 +1,17 @@
 class MenusController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+  
   def index
-    @menus = Menu.all
+      @menus = Menu.all
   end
 
   def show
     @menu = Menu.find(params[:id])
+    if params[:tag]
+      @menu_items = @menu.menu_items.tagged_with(params[:tag])
+    else
+      @menu_items = @menu.menu_items
+    end
   end
   
   def new
@@ -42,6 +49,10 @@ class MenusController < ApplicationController
     redirect_to menus_path
   end
   
+  def tag_cloud
+    @tags = Menu.find(:first).menu_items.tag_counts_on(:tags)
+  end
+    
   private
   
   def menu_params
