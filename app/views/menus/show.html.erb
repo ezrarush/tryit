@@ -1,0 +1,17 @@
+<p>
+  <strong>Title:</strong>
+  <%= @menu.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @menu.text %>
+</p>
+
+<h2>Menu Items</h2>
+<%= render  @menu.menu_items %>
+
+<h2>Add a menu item:</h2>
+<%= render "menu_items/form" %>
+
+<%= link_to 'Edit', edit_menu_path(@menu) %> |  <%= link_to 'Back', menus_path %>

@@ -1,0 +1,9 @@
+<p>
+  <strong>Title:</strong>
+  <%= @menu.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @menu.text %>
+</p>
