@@ -1,4 +1,16 @@
-<h3>Home</h3>
+<h3>Welcome to My Rails Demo</h3>
 
-<%= link_to 'My Menus', controller: 'menus' %>
+This website is a restaurant menu and point of sales app. New accounts have administrative rights to manage users and create/edit menus for testing purposes. Email account validation and password resets are disabled for this demo. Please click the link below to start. <br><br>
+
+<%= link_to 'Restaurant Menus', controller: 'menus' %> <br><br>
+
+Summary of technology used:<br><br>
+
+Authentication using devise<br>
+Authorization using warden<br>
+Front end using bootstrap-sass<br>
+Tags using acts-as-taggable-on<br>
+
+<br><br>
+Source code can be found at <%= link_to 'Github', 'https://github.com/ezrarush/' %>
 

@@ -7,10 +7,11 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
+    @categories = @menu.menu_items.tag_counts_on(:categories)
     if params[:tag]
       @menu_items = @menu.menu_items.tagged_with(params[:tag])
     else
-      @menu_items = @menu.menu_items
+      @mnu_items = @menu.menu_items
     end
   end
   
@@ -50,7 +51,7 @@ class MenusController < ApplicationController
   end
   
   def tag_cloud
-    @tags = Menu.find(:first).menu_items.tag_counts_on(:tags)
+    @tags = Menu.find(params[:id]).menu_items.tag_counts_on(:tags)
   end
     
   private
